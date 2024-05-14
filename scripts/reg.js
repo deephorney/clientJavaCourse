@@ -8,7 +8,7 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
     jsonData[key] = value;
   });
 
-  fetch("http://localhost:8083/auth/sign-up", {
+  fetch("https://serverjavacourse.onrender.com/auth/sign-up", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

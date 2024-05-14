@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (token) {
       let headers = new Headers();
       headers.append("Authorization", "Bearer " + token);
-      fetch("http://localhost:8083/secured/user/name", {
+      fetch("https://serverjavacourse.onrender.com/secured/user/name", {
         method: "GET",
         headers: headers,
       })

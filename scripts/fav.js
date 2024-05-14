@@ -1,4 +1,4 @@
-fetch("http://localhost:8083/secured/liked-music", {
+fetch("https://serverjavacourse.onrender.com/secured/liked-music", {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
@@ -14,7 +14,7 @@ fetch("http://localhost:8083/secured/liked-music", {
       let artist = music.artistName;
       let id = music.id;
 
-      fetch(`http://localhost:8083/music/song/${name}`)
+      fetch(`https://serverjavacourse.onrender.com/music/song/${name}`)
         .then((response) => response.arrayBuffer())
         .then((arrayBuffer) => {
           var blob = new Blob([arrayBuffer], { type: "audio/mpeg" });
@@ -31,7 +31,7 @@ fetch("http://localhost:8083/secured/liked-music", {
           audio.controls = true;
           trackContainer.appendChild(audio);
 
-          fetch(`http://localhost:8083/music/image/${name}`)
+          fetch(`https://serverjavacourse.onrender.com/music/image/${name}`)
             .then((response) => response.arrayBuffer())
             .then((arrayBuffer) => {
               var blob = new Blob([arrayBuffer], { type: "image/jpg" });
@@ -46,13 +46,16 @@ fetch("http://localhost:8083/secured/liked-music", {
           let likeButton = document.createElement("button");
           likeButton.textContent = "Удалить";
           likeButton.addEventListener("click", function () {
-            fetch(`http://localhost:8083/secured/music/${id}/like`, {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("token"),
-              },
-            }).then(() => {
+            fetch(
+              `https://serverjavacourse.onrender.com/secured/music/${id}/like`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+              }
+            ).then(() => {
               location.reload();
             });
           });

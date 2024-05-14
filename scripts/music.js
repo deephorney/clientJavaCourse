@@ -1,4 +1,4 @@
-fetch("http://localhost:8083/music/read")
+fetch("https://serverjavacourse.onrender.com/music/read")
   .then((response) => response.json())
   .then((json) => {
     let musics = json;
@@ -8,7 +8,7 @@ fetch("http://localhost:8083/music/read")
       let artist = music.artistName;
       let id = music.id;
 
-      fetch(`http://localhost:8083/music/song/${name}`)
+      fetch(`https://serverjavacourse.onrender.com/music/song/${name}`)
         .then((response) => response.arrayBuffer())
         .then((arrayBuffer) => {
           var blob = new Blob([arrayBuffer], { type: "audio/mpeg" });
@@ -25,7 +25,7 @@ fetch("http://localhost:8083/music/read")
           audio.controls = true;
           trackContainer.appendChild(audio);
 
-          fetch(`http://localhost:8083/music/image/${name}`)
+          fetch(`https://serverjavacourse.onrender.com/music/image/${name}`)
             .then((response) => response.arrayBuffer())
             .then((arrayBuffer) => {
               var blob = new Blob([arrayBuffer], { type: "image/jpg" });
@@ -40,13 +40,16 @@ fetch("http://localhost:8083/music/read")
           let likeButton = document.createElement("button");
           likeButton.textContent = "Лайк";
           likeButton.addEventListener("click", function () {
-            fetch(`http://localhost:8083/secured/music/${id}/like`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("token"),
-              },
-            });
+            fetch(
+              `https://serverjavacourse.onrender.com/secured/music/${id}/like`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+              }
+            );
           });
 
           trackContainer.appendChild(likeButton);
