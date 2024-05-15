@@ -33,6 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   document.querySelector(".logout").addEventListener("click", function () {
     localStorage.clear();
-    window.location.href = "../clientJavaCourse/index.html";
+    location.reload();
   });
 });

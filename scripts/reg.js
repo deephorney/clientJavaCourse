@@ -18,6 +18,6 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
     .then((response) => response.text())
     .then((text) => {
       alert(text);
-      window.location.href = "../clientJavaCourse/index.html";
+      location.reload()
     });
 });
