@@ -21,7 +21,7 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
         alert("Неправильное имя пользователя или пароль");
       } else {
         localStorage.setItem("token", token);
-        window.location.href = "../music.html";
+        window.location.href = "../clientJavaCourse/music.html";
       }
     });
 });
